@@ -40,10 +40,10 @@ stages:
           
     - script: |
         cd api
-        pip3 install python3-venv -y
+        pip3 install -y python3-venv
         python3 -m venv venv
         . venv/bin/activate
-        pip3 install flask python-dotenv -y
+        pip3 install -y flask python-dotenv
       workingDirectory: $(projectRoot)
       displayName: "Install requirements"
     
