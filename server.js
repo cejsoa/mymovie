@@ -6,6 +6,7 @@ const dbConfig = require("./app/config/db.config.js");
 
 var app = express();
 require("./app/routes/movie.routes")(app);
+require("./app/routes/recom.routes")(app);
 
 app.use(cors());
 // parse requests of content-type - application/json
