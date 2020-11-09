@@ -5,13 +5,14 @@ const db = require("./app/models");
 const dbConfig = require("./app/config/db.config.js");
 
 var app = express();
-require("./app/routes/movie.routes")(app);
+const moviesController = require("./app/routes/movie.routes");
 
 app.use(cors());
-// parse requests of content-type - application/json
 app.use(bodyParser.json());
-// parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//Routes
+app.use("/api/movies/", moviesController);
 
 db.sequelize.authenticate().then(() => {
   console.log('Connection to the database established successfully')
@@ -29,5 +30,5 @@ const port = process.env.PORT || 3000
 var server = app.listen(port, function () {
    var host = server.address().address
    
-   console.log("Example app listening at http://%s:%s", host, port)
+   console.log("Listening at http://%s:%s", host, port)
 })
