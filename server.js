@@ -5,14 +5,18 @@ const db = require("./app/models");
 const dbConfig = require("./app/config/db.config.js");
 
 var app = express();
-const moviesController = require("./app/routes/movie.routes");
+
+//Routes includes
+const moviesRoutes = require("./app/routes/movie.routes");
+const commentRoutes = require("./app/routes/comment.routes");
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //Routes
-app.use("/api/movies/", moviesController);
+app.use("/api/movies/", moviesRoutes);
+app.use("/api/comments/", commentRoutes);
 
 db.sequelize.authenticate().then(() => {
   console.log('Connection to the database established successfully')
