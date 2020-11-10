@@ -10,6 +10,9 @@ var app = express();
 const moviesRoutes = require("./app/routes/movie.routes");
 const commentRoutes = require("./app/routes/comment.routes");
 const genreRoutes = require("./app/routes/genre.routes");
+const imageRoutes = require("./app/routes/image.routes");
+const languageRoutes = require("./app/routes/language.routes");
+const styleRoutes = require("./app/routes/style.routes");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -19,6 +22,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/movies/", moviesRoutes);
 app.use("/api/comments/", commentRoutes);
 app.use("/api/genres/", genreRoutes);
+app.use("/api/images/", imageRoutes);
+app.use("/api/languages/", languageRoutes);
+app.use("/api/styles/", styleRoutes);
 
 db.sequelize.authenticate().then(() => {
   console.log('Connection to the database established successfully')
