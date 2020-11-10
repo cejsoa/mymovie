@@ -1,11 +1,11 @@
 const db = require("../models");
-const Comment = db.comment;
+const Genre = db.genre;
 const Op = db.Sequelize.Op;
 
-//Find one Comment object by PK
+//Find one Genre object by PK
 exports.findOne = (req, res) => {
     const id = req.params.id;
-    Comment.findByPk(id)
+    Genre.findByPk(id)
     .then(data => {
         if(data){
             res.send(data)
@@ -19,14 +19,14 @@ exports.findOne = (req, res) => {
     .catch(err => {
         console.log(err);
         res.status(500).send({
-        message: "Error retrieving Comment with id=" + id
+        message: "Error retrieving Genre object with id=" + id
         });
     });
 };
   
-//Retrieve and send all Comment objects
+//Retrieve and send all Genre objects
 exports.findAll = (req, res) => {
-    Comment.findAll()
+    Genre.findAll()
     .then(data => {
         if(data){
             res.send(data)
@@ -40,13 +40,13 @@ exports.findAll = (req, res) => {
     .catch(err => {
       console.log(err);
       res.status(500).send({
-        message: "Error retrieving Comment with id=" + id
+        message: "Error retrieving Genre object with id=" + id
         });
     });
 };
   
   
-//Create a new Comment
+//Create a new Genre
 exports.create = (req, res) => {
     // Validate request
     if (!req.body) {
@@ -56,66 +56,66 @@ exports.create = (req, res) => {
         return;
     }
   
-    // Save Comment in the database
-    Comment.create(req.body)
+    // Save Genre in the database
+    Genre.create(req.body)
     .then(data => { 
         res.send(data);
     })
     .catch(err => {
         res.status(500).send({
             message:
-                err.message || "Some error occurred while creating the Comment object."
+                err.message || "Some error occurred while creating the Genre object."
         });
     });
 };
   
-//Update an existing Comment object
+//Update an existing Genre object
 exports.update = (req, res) => {
     const id = req.params.id;    
     
-    Comment.update(req.body, {
+    Genre.update(req.body, {
         where: { id: id }
     })
     .then(num => {
         if (num == 1) {
             res.send({
-                message: "Comment object was updated successfully."
+                message: "Genre object was updated successfully."
             });
         } else {
             res.send({
-                message: `Cannot update Comment with id=${id}. Maybe Comment was not found or req.body is empty!`
+                message: `Cannot update Genre object with id=${id}. Maybe Genre was not found or req.body is empty!`
             });
         }
     })
     .catch(err => {
         res.status(500).send({
-            message: "Error updating Comment with id=" + id
+            message: "Error updating Genre object with id=" + id
         });
     });
 };
   
-//Delete a Comment object
+//Delete a Genre object
   
 exports.delete = (req, res) => {
     const id = req.params.id;
   
-    Comment.destroy({
+    Genre.destroy({
         where: { id: id }
     })
     .then(num => {
         if (num == 1) {
             res.send({
-                message: "Comment was deleted successfully!"
+                message: "Genre object was deleted successfully!"
             });
         } else {
             res.send({
-                message: `Cannot delete Comment with id=${id}. Maybe Comment was not found!`
+                message: `Cannot delete Genre object with id=${id}. Maybe Genre was not found!`
             });
         }
     })
     .catch(err => {
         res.status(500).send({
-            message: "Could not delete Comment with id=" + id
+            message: "Could not delete Genre object with id=" + id
         });
     });
 };

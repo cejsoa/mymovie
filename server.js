@@ -9,6 +9,7 @@ var app = express();
 //Routes includes
 const moviesRoutes = require("./app/routes/movie.routes");
 const commentRoutes = require("./app/routes/comment.routes");
+const genreRoutes = require("./app/routes/genre.routes");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Routes
 app.use("/api/movies/", moviesRoutes);
 app.use("/api/comments/", commentRoutes);
+app.use("/api/genres/", genreRoutes);
 
 db.sequelize.authenticate().then(() => {
   console.log('Connection to the database established successfully')
@@ -26,7 +28,7 @@ db.sequelize.authenticate().then(() => {
 })
 
 app.get('/', function (req, res) {
-   res.send('Hello World cris');
+   res.send('MyMovie API');
 })
 
 const port = process.env.PORT || 3000
