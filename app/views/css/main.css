@@ -17,6 +17,8 @@ nav {
     border: 1px solid #05386b;
     border-left: none;
     border-right: none;
+    position: fixed;
+    width: 100%;
 }
 
 nav ul {
