@@ -1,0 +1,238 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background: #8ee4af;
+}
+
+body .modal {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    background: #05386b;
+    padding: 30px 80px;
+    border: 1px solid #05386b;
+    border-left: none;
+    border-right: none;
+    position: fixed;
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* padding: 0 0 0 10px; */
+}
+
+nav ul li {
+    margin: 0 0 0 10px;
+}
+
+nav ul .logo {
+    flex: 1;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+}
+
+nav ul .logo .logo-label {
+    padding: 2px 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+nav ul .logo .logo-label:hover {
+    color: #379683;
+}
+
+nav ul .search-icon {
+    height: 40px;
+    width: 240px;
+    display: flex;
+    background: #f2f2f2;
+    border-radius: 5px;
+}
+
+nav ul .search-icon input {
+    height: 100%;
+    width: 200px;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    color: #000;
+    font-size: 16px;
+    border-radius: 5px 0 0 5px;
+}
+
+.icon {
+    height: 100%;
+    border: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-icon {
+    line-height: 40px;
+    width: 40px;
+    border-left: 1px solid #cccccc;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.icon-logo {
+    height: 100%;
+    width: 60px;
+    padding: 15px;
+    align-items: center;
+    border: none;
+    border-left: 1px solid #cccccc;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.icon:hover {
+    background: #379683;
+    cursor: pointer
+}
+
+nav ul .add-icon {
+    height: 40px;
+    width: 160px;
+    display: flex;
+    background: #f2f2f2;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.icon-text {
+    width: 150px;
+    display: flex;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.add-icon:hover {
+    background-color: #379683;
+    cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    margin: auto;
+    visibility: hidden;
+}
+
+#btn-nav-add:checked ~ .modal {
+    visibility: visible;
+}
+
+#btn-nav-add {
+    display: none;
+}
+
+.modal .modal-add {
+    width: 500px;
+    height: 500px;
+    margin: 12px;
+    background: #fff;
+    border-radius: 5px;
+    position: relative;
+}
+
+.modal-header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+    background: #05386b;
+    color: white;
+    height: 40px;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.modal-add #buttons {
+    display: inline;
+    margin: 10px;
+    list-style: none;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    right: 10px;
+    position: absolute;
+    bottom: 10px;
+}
+
+.btn-ok {
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #cfcfc4;
+}
+
+.btn-wrong {
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #b6afac;
+}
+
+.form-card{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    margin-top: 50px;   
+}
+
+.form-attributes {
+    align-items: center;
+    justify-content: center;
+}
+
+.form-inputs {
+    align-items: center;
+    justify-content: center;
+    display: inline;
+    padding: 10px;
+    margin: 10px;
+}
+
+.form-input {
+    margin: 10px;
+    height: 40px;
+    width: 175px;
+    background: #eee;
+    border: 0.5px solid;
+    border-color: #999;
+    border-radius: 5px;
+    font-size: 20px;
+    align-content: center;
+    outline: none;
+    padding: 10px;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>MyMovie</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+    <!-- Hidden inputs -->
+    <input type="checkbox" id="btn-nav-add">
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-inverse">
+        <ul>
+            <li class="logo">
+                <label id="logo-button" class="logo-label">My Movie</label>
+                <label class="icon-logo">
+                    <span class="fa fa-ticket-alt"></span>
+                </label>
+            </li>
+            <li class="search-icon">
+                <input id="search-bar" type="search" placeholder="Buscar">
+                <label id="btn-search" class="icon nav-icon">
+                    <span class="fas fa-search"></span>
+                </label>
+            </li>
+            <li class="add-icon">
+                <label for="btn-nav-add" class="icon-text">Agregar película</label>
+                <label for="btn-nav-add" class="icon nav-icon">
+                    <span class="fa fa-plus"></span>
+                </label>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main funtion pages -->
+
+    <div class="modal">
+        <div class="modal-add">
+            <label class="modal-header">
+                <span>Agregar una película</span>
+            </label>
+            <div class="form-card">
+                <ul class="form-attributes">
+                    <li class="form-inputs">
+                        <input class="form-input" type="text">
+                        <input class="form-input" type="text">
+                    </li>
+                    <li class="form-inputs">
+                        <input class="form-input" type="text">
+                        <input class="form-input" type="text">
+                    </li>
+                    <li class="form-inputs">
+                        <input class="form-input" type="text">
+                        <input class="form-input" type="text">
+                    </li>
+                    <li class="form-inputs">
+                        <input class="form-input" type="text">
+                        <input class="form-input" type="text">
+                    </li>
+                </ul>
+            </div>
+            <ul id="buttons">
+                <label for="btn-nav-add" id="btn-accept-movie" class="icon btn-ok">Agregar</label>
+                <label for="btn-nav-add" id="btn-cancel-movie" class="icon btn-wrong">Cancelar</label>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
