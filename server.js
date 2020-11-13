@@ -5,13 +5,26 @@ const db = require("./app/models");
 const dbConfig = require("./app/config/db.config.js");
 
 var app = express();
-require("./app/routes/movie.routes")(app);
+
+//Routes includes
+const moviesRoutes = require("./app/routes/movie.routes");
+const commentRoutes = require("./app/routes/comment.routes");
+const genreRoutes = require("./app/routes/genre.routes");
+const imageRoutes = require("./app/routes/image.routes");
+const languageRoutes = require("./app/routes/language.routes");
+const styleRoutes = require("./app/routes/style.routes");
 
 app.use(cors());
-// parse requests of content-type - application/json
 app.use(bodyParser.json());
-// parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//Routes
+app.use("/api/movies/", moviesRoutes);
+app.use("/api/comments/", commentRoutes);
+app.use("/api/genres/", genreRoutes);
+app.use("/api/images/", imageRoutes);
+app.use("/api/languages/", languageRoutes);
+app.use("/api/styles/", styleRoutes);
 
 db.sequelize.authenticate().then(() => {
   console.log('Connection to the database established successfully')
@@ -21,7 +34,7 @@ db.sequelize.authenticate().then(() => {
 })
 
 app.get('/', function (req, res) {
-   res.send('Hello World cris');
+   res.send('MyMovie API');
 })
 
 const port = process.env.PORT || 3000
@@ -29,5 +42,5 @@ const port = process.env.PORT || 3000
 var server = app.listen(port, function () {
    var host = server.address().address
    
-   console.log("Example app listening at http://%s:%s", host, port)
+   console.log("Listening at http://%s:%s", host, port)
 })
