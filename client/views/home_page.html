@@ -10,65 +10,107 @@
 </head>
 
 <body>
-    <!-- Hidden inputs -->
-    <input type="checkbox" id="btn-nav-add">
-    <!-- Barra de navegación -->
-    <nav class="navbar navbar-inverse">
-        <ul>
-            <li class="logo">
-                <label id="logo-button" class="logo-label">My Movie</label>
-                <label class="icon-logo">
-                    <span class="fa fa-ticket-alt"></span>
-                </label>
-            </li>
-            <li class="search-icon">
-                <input id="search-bar" type="search" placeholder="Buscar">
-                <label id="btn-search" class="icon nav-icon">
-                    <span class="fas fa-search"></span>
-                </label>
-            </li>
-            <li class="add-icon">
-                <label for="btn-nav-add" class="icon-text">Agregar película</label>
-                <label for="btn-nav-add" class="icon nav-icon">
-                    <span class="fa fa-plus"></span>
-                </label>
-            </li>
-        </ul>
-    </nav>
+   <!-- Hidden inputs -->
+   <input class="hidden" type="checkbox" id="btn-nav-add">
+   <input class="hidden" type="checkbox" id="btn-nav-advice">
+   <!-- Barra de navegación -->
+   <nav class="navbar navbar-inverse">
+       <ul>
+           <li class="logo">
+               <label id="logo-button" class="logo-label">My Movie</label>
+               <label class="icon-logo">
+                   <span class="fa fa-ticket-alt"></span>
+               </label>
+           </li>
+           <li class="search-icon">
+               <input id="search-bar" type="search" placeholder="Buscar">
+               <label id="btn-search" class="icon nav-icon">
+                   <span class="fas fa-search"></span>
+               </label>
+           </li>
+           <li class="text-icon">
+               <label for="btn-nav-add" class="icon-text">Agregar película</label>
+               <label for="btn-nav-add" class="icon nav-icon">
+                   <span class="fa fa-plus"></span>
+               </label>
+           </li>
+           <li class="text-icon">
+               <label for="btn-nav-advice" class="icon-text">Recomendación</label>
+               <label for="btn-nav-advice" class="icon nav-icon">
+                   <span class="fa fa-star"></span>
+               </label>
+           </li>
+       </ul>
+   </nav>
 
-    <!-- Main funtion pages -->
 
-    <div class="modal">
-        <div class="modal-add">
-            <label class="modal-header">
-                <span>Agregar una película</span>
-            </label>
-            <div class="form-card">
-                <ul class="form-attributes">
-                    <li class="form-inputs">
-                        <input class="form-input" type="text">
-                        <input class="form-input" type="text">
-                    </li>
-                    <li class="form-inputs">
-                        <input class="form-input" type="text">
-                        <input class="form-input" type="text">
-                    </li>
-                    <li class="form-inputs">
-                        <input class="form-input" type="text">
-                        <input class="form-input" type="text">
-                    </li>
-                    <li class="form-inputs">
-                        <input class="form-input" type="text">
-                        <input class="form-input" type="text">
-                    </li>
-                </ul>
-            </div>
-            <ul id="buttons">
-                <label for="btn-nav-add" id="btn-accept-movie" class="icon btn-ok">Agregar</label>
-                <label for="btn-nav-add" id="btn-cancel-movie" class="icon btn-wrong">Cancelar</label>
-            </ul>
-        </div>
-    </div>
+   <!-- Main funtion pages -->
+
+   <div class="modal">
+       <div class="modal-add">
+           <label class="modal-header">
+               <span>Agregar una película</span>
+           </label>
+           <div class="form-card">
+               <ul class="form-attributes">
+                   <label class="form-label">Nombre de película</label>
+                   <label class="form-label">Director</label>
+                   <input class="form-input" type="text" placeholder="Película">
+                   <input class="form-input" type="text" placeholder="Director">
+
+                   <label class="form-label">Año</label>
+                   <label class="form-label">Calificación comunidad</label>
+                   <input class="form-input" type="number" min="0" placeholder="Año">
+                   <input class="form-input" type="number" min="0" max="10" placeholder="Calificación">
+
+                   <label class="form-label">Nota IMDB</label>
+                   <label class="form-label">Calificación personal</label>
+                   <input class="form-input" type="number" min="0" max="10" placeholder="Nota">
+                   <input class="form-input" type="number" min="0" max="10" placeholder="Metascore">
+
+                   <label class="form-label">Género</label>
+                   <label class="form-label">Idioma</label>
+                   <select class="form-input">
+                       <option *ngFor="let item of list" [value]="item">Género</option>
+                   </select>
+                   <select class="form-input">
+                       <option *ngFor="let item of list" [value]="item">Idioma</option>
+                   </select>
+
+                   <label class="form-label">Estilo</label>
+                   <select class="form-input">
+                       <option *ngFor="let item of list" [value]="item">Estilo</option>
+                   </select>
+               </ul>
+           </div>
+           <ul class="modal-buttons">
+               <label for="btn-nav-add" id="btn-accept-movie" class="icon btn-ok">Agregar</label>
+               <label for="btn-nav-add" id="btn-cancel-movie" class="icon btn-wrong">Cancelar</label>
+           </ul>
+       </div>
+       <div class="modal-advice">
+           <label class="modal-header">
+               <span>Solicitar Recomendación</span>
+           </label>
+           <div class="form-card">
+               <ul class="form-attributes">
+                   <label class="form-label">Nombre de película</label>
+                   <label class="form-label">Director</label>
+                   <input class="form-input" type="text" placeholder="Película">
+                   <input class="form-input" type="text" placeholder="Director">
+
+                   <label class="form-label">Año</label>
+                   <label class="form-label">Calificación comunidad</label>
+                   <input class="form-input" type="number" min="0" placeholder="Año">
+                   <input class="form-input" type="number" min="0" max="10" placeholder="Calificación">
+               </ul>
+           </div>
+           <ul class="modal-buttons">
+               <label for="btn-nav-advice" id="btn-accept-movie" class="icon btn-ok">Me siento con suerte</label>
+               <label for="btn-nav-advice" id="btn-cancel-movie" class="icon btn-wrong">Cancelar</label>
+           </ul>
+       </div>
+   </div>
 </body>
 
 </html>

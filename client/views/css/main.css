@@ -8,21 +8,21 @@
 }
 
 body {
-    background: #8ee4af;
+    background: #A8DADC;
 }
 
 body .modal {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 nav {
-    background: #05386b;
+    background: #1D3557;
     padding: 30px 80px;
-    border: 1px solid #05386b;
+    border: 1px solid #1D3557;
     border-left: none;
     border-right: none;
     position: fixed;
@@ -35,7 +35,6 @@ nav ul {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    /* padding: 0 0 0 10px; */
 }
 
 nav ul li {
@@ -46,18 +45,46 @@ nav ul .logo {
     flex: 1;
     font-size: 30px;
     font-weight: 700;
+    color: #E63946;
+}
+
+.icon-logo {
+    height: 100%;
+    font-size: 30px;
+    align-items: center;
+    border-radius: 0 5px 5px 0;
+    background: #E63946;
+    color: white;
+    /* border-right: 1px solid #cccccc; */
+    border: 1px solid #cccccc;
+    padding: 2px 8px;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.logo .icon-logo:hover {
+    cursor: pointer;
+}
+
+.logo .logo-label:hover {
+    cursor: pointer;
+}
+
+.icon:hover {
+    background: #457B9D;
+    cursor: pointer;
     color: white;
 }
 
 nav ul .logo .logo-label {
+    border: 1px solid #cccccc;
     padding: 2px 8px;
-    cursor: pointer;
-    border-radius: 5px;
+    background: #E63946;
+    color: white;
+    border-radius: 5px 0 0 5px;
     text-transform: uppercase;
-}
-
-nav ul .logo .logo-label:hover {
-    color: #379683;
 }
 
 nav ul .search-icon {
@@ -95,23 +122,7 @@ nav ul .search-icon input {
     cursor: pointer;
 }
 
-.icon-logo {
-    height: 100%;
-    width: 60px;
-    padding: 15px;
-    align-items: center;
-    border: none;
-    border-left: 1px solid #cccccc;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-}
-
-.icon:hover {
-    background: #379683;
-    cursor: pointer
-}
-
-nav ul .add-icon {
+nav ul .text-icon {
     height: 40px;
     width: 160px;
     display: flex;
@@ -129,35 +140,55 @@ nav ul .add-icon {
     cursor: pointer;
 }
 
-.add-icon:hover {
-    background-color: #379683;
+.text-icon:hover {
+    background-color: #457B9D;
     cursor: pointer;
+    color: white;
 }
 
 .modal {
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.4);
     margin: auto;
     visibility: hidden;
 }
 
-#btn-nav-add:checked ~ .modal {
+#btn-nav-add:checked~.modal {
     visibility: visible;
 }
 
-#btn-nav-add {
-    display: none;
+#btn-nav-add:checked~.modal .modal-add {
+    visibility: visible;
+}
+
+#btn-nav-advice:checked~.modal {
+    visibility: visible;
+}
+
+#btn-nav-advice:checked~.modal .modal-advice {
+    visibility: visible;
+}
+
+.modal .modal-advice {
+    width: 500px;
+    height: 300px;
+    margin: 12px;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    visibility: hidden;
 }
 
 .modal .modal-add {
     width: 500px;
-    height: 500px;
+    height: 600px;
     margin: 12px;
     background: #fff;
     border-radius: 5px;
-    position: relative;
+    position: absolute;
+    visibility: hidden;
 }
 
 .modal-header {
@@ -176,7 +207,7 @@ nav ul .add-icon {
     border-bottom-right-radius: 0;
 }
 
-.modal-add #buttons {
+.modal-buttons {
     display: inline;
     margin: 10px;
     list-style: none;
@@ -202,37 +233,41 @@ nav ul .add-icon {
     background: #b6afac;
 }
 
-.form-card{
+.form-card {
     position: relative;
     align-items: center;
     justify-content: center;
     margin: 20px;
-    margin-top: 50px;   
+    margin-top: 50px;
 }
 
 .form-attributes {
     align-items: center;
     justify-content: center;
-}
-
-.form-inputs {
-    align-items: center;
-    justify-content: center;
-    display: inline;
-    padding: 10px;
-    margin: 10px;
+    display: grid;
+    grid-template-columns: 200px 200px;
 }
 
 .form-input {
-    margin: 10px;
-    height: 40px;
-    width: 175px;
+    margin: 5px;
+    height: 35px;
     background: #eee;
     border: 0.5px solid;
     border-color: #999;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 16px;
     align-content: center;
     outline: none;
-    padding: 10px;
+    padding: 0 10px;
+}
+
+.form-label {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    color: #666;
+}
+
+.hidden {
+    display: none;
 }

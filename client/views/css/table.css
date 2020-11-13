@@ -1,0 +1,70 @@
+body .search-card {
+    justify-content: center;
+    position: absolute;
+    display: flex;
+    top: 120px;
+    width: 100%;
+    bottom: 0px;
+}
+
+.vertical-list {
+    align-content: center;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: #ccc;
+    background-color: aliceblue;
+    bottom: 10px;
+}
+
+.row-list {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 650px 150px;
+    position: relative;
+    list-style: none;
+    background: white;
+    width: 800px;
+}
+
+.row-list:hover {
+    transform: scale(1.02, 1.02);
+    border-radius: 5px;
+    background: #457B9D;
+    border: #ccc 1px solid;
+    transition: all 100ms ease;
+    color: white;
+    cursor: pointer;
+}
+
+.row-list label {
+    cursor: pointer;
+}
+
+.colum {
+    position: absolute;
+    padding: 10px;
+    margin: 5px;
+}
+
+.left {
+    left: 10px;
+}
+.right {
+    right: 10px;
+    padding: 0 45px;
+    border-left: 1px #ccc solid;
+}
+
+.list-header {
+    padding: 10px;
+    display: grid;
+    color: white;
+    grid-template-columns: 650px 150px;
+    position: relative;
+    list-style: none;
+    background: #E63946;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 1px #ccc solid;
+    width: 800px;
+}
