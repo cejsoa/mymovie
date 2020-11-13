@@ -1,0 +1,78 @@
+.profile {
+    justify-content: center;
+    display: grid;
+    position: absolute;
+    top: 120px;
+    width: 100%;
+}
+
+.profile-header {
+    width: 800px;
+    height: 200px;
+    display: grid;
+    grid-template-columns: 300px 300px 200px;
+    -ms-grid-column-align: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px white solid;
+    background: #E63946;
+}
+
+.profile-body {
+    display: grid;
+}
+
+.image {
+    flex: 1;
+    width: 100px;
+    height: 250px;
+    align-items: center;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 0 20px;
+}
+
+.image .avatar {
+    max-width: 100px;
+    max-height: 250px;
+    border-radius: 5px;
+    border: 2px solid white;
+}
+
+.data-header {
+    color: white;
+    font-size: 50px;
+    border-radius: 5px;
+    padding: 20px 20px;
+}
+
+.title {
+    font-size: 20px;
+}
+
+.info-argument {
+    margin: 5px 0;
+    padding: 2px 0;
+    display: grid;
+    grid-template-columns: 200px 600px;
+    text-align: center;
+    border: 1px #ccc solid;
+    background: white;
+}
+
+.argument {
+    color: black;
+    font-size: 16px;
+    border-right: 0.5px #ccc solid;
+    border-left: 0.5px #ccc solid;
+}
+
+
+.info-list {
+    display: grid;
+    list-style: none;
+    align-items: center;
+    border-radius: 5px;
+}
