@@ -320,7 +320,6 @@ dar la forma y el destaque de los labels /botones  */
 
 .form-input {
     margin: 5px;
-    height: 35px;
     background: #eee;
     border: 0.5px solid;
     border-color: #999;
@@ -332,9 +331,13 @@ dar la forma y el destaque de los labels /botones  */
     text-align: center;
 }
 
+.form-attributes .form-input {
+    height: 35px;
+}
+
 /* Elimina el borde de un form-input dentro de un div */
 
-div .form-input {
+div.form-input {
     border: none;
 }
 
@@ -378,13 +381,6 @@ div .form-input {
     padding: 10px;
     border-radius: 5px;
     background: #b6afac;
-}
-
-/* Boton de agregar comentario */
-
-#btn-comment {
-    display: none;
-    visibility: hidden;
 }
 
 /* Sección para modal de comentarios */
