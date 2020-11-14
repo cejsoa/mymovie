@@ -82,7 +82,7 @@ exports.update = (req, res) => {
                 message: "style object was updated successfully."
             });
         } else {
-            res.send({
+            res.status(400).send({
                 message: `Cannot update style object with id=${id}. Maybe style was not found or req.body is empty!`
             });
         }
@@ -108,7 +108,7 @@ exports.delete = (req, res) => {
                 message: "style object was deleted successfully!"
             });
         } else {
-            res.send({
+            res.status(400).send({
                 message: `Cannot delete style object with id=${id}. Maybe style was not found!`
             });
         }
