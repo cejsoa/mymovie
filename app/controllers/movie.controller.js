@@ -119,3 +119,32 @@ exports.delete = (req, res) => {
       });
     });
 };
+
+//Find movies by aproximate name
+
+exports.searchByAproxName = (req, res) => {
+  var name = req.params.name;
+  Movies.findAll({
+    where: {
+      NameMovie: {
+        [Op.like]: name+'%'
+      }
+    }
+  })
+  .then(data => {
+    if(data){
+      res.send(data)
+    } else {
+      res.status(404).send(
+        {
+          message: "Resource not found"
+        })
+    }
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).send({
+      message: "Error retrieving Movies with" + name
+      });
+  });
+};
