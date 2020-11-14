@@ -1,0 +1,145 @@
+/* Esta es la sección del perfil de la película */
+
+.profile {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 800px;
+    position: absolute;
+    top: 120px;
+    width: 100%;
+}
+
+/* El header de la película que contiene:
+ -> La imagen
+ -> El título
+ -> La nota */
+
+.profile-header {
+    width: 800px;
+    height: 200px;
+    display: grid;
+    grid-template-columns: 300px 500px;
+    align-items: center;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.profile-header .image {
+    align-items: center;
+    border-radius: 5px;
+    position: relative;
+}
+
+.profile-header .image .avatar {
+    width: 150px;
+    height: 200px;
+    border-radius: 10px;
+    border: 2px solid #E63946;
+    left: 0;
+}
+
+.profile-header .data-header {
+    display: grid;
+    grid-template-columns: 250px 250px;
+    color: white;
+    border-radius: 10px;
+    height: 200px;
+    align-items: center;
+    background: #E63946;
+}
+
+.title {
+    font-size: 20px;
+}
+
+.score {
+    font-size: 50px;
+}
+
+/* Cuerpo del perfil, contiene la información de la película */
+
+.profile-body {
+    margin: 15px 0 0 0;
+    display: grid;
+}
+
+/* Esta es para el despliegue de la lista contiene
+ -> La lista
+ -> La fila de la lista
+ -> Argumentos por fila (dos culumnas)*/
+
+.info-list {
+    display: grid;
+    list-style: none;
+    align-items: center;
+    border-radius: 5px;
+}
+
+/* Esta el la fila que contiene cada atributo de la película */
+
+.info-argument {
+    margin: 5px 0;
+    padding: 2px 0;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 200px 600px;
+    text-align: center;
+    border: 1px #ccc solid;
+    background: white;
+}
+
+/* Esta es cada celda que va el la columna de la fila */
+
+.argument {
+    color: black;
+    font-size: 16px;
+    border-right: 0.1px #ccc solid;
+    border-left: 0.1px #ccc solid;
+}
+
+/* Sección de comentarios del perfil de la película
+ -> Secciones (Header y comentarios (U otros))*/
+
+.profile-comments {
+    display: grid;
+    grid-template-columns: 800px;
+    position: relative;
+}
+
+/* Subsección de la sección de comentarios */
+
+.comment-section {
+    border-radius: 0px;
+    border-top: 1px white solid;
+    padding: 10px 0;
+    position: relative;
+}
+
+/* Cada "Fila" de la sección (Puede ser cada comentario) */
+
+.comment {
+    display: grid;
+    grid-template-columns: 100px 700px;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    height: 100%;
+    align-items: center;
+    position: relative;
+    border-radius: 5px;
+}
+
+/* El header de la sección de comentarios */
+
+.comment-header {
+    background: #E63946;
+    color: white;
+}
+
+/* Texto dentro de cada comentario en el perfil */
+
+.comment-text {
+    border-left: 1px #ccc solid;
+    padding: 0 20px;
+    font-size: 14px;
+}
