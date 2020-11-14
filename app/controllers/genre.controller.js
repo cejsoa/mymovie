@@ -82,7 +82,7 @@ exports.update = (req, res) => {
                 message: "Genre object was updated successfully."
             });
         } else {
-            res.send({
+            res.status(400).send({
                 message: `Cannot update Genre object with id=${id}. Maybe Genre was not found or req.body is empty!`
             });
         }
@@ -108,7 +108,7 @@ exports.delete = (req, res) => {
                 message: "Genre object was deleted successfully!"
             });
         } else {
-            res.send({
+            res.status(400).send({
                 message: `Cannot delete Genre object with id=${id}. Maybe Genre was not found!`
             });
         }

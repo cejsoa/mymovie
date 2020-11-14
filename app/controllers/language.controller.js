@@ -82,7 +82,7 @@ exports.update = (req, res) => {
                 message: "language object was updated successfully."
             });
         } else {
-            res.send({
+            res.status(400).send({
                 message: `Cannot update language object with id=${id}. Maybe language was not found or req.body is empty!`
             });
         }
@@ -108,7 +108,7 @@ exports.delete = (req, res) => {
                 message: "language object was deleted successfully!"
             });
         } else {
-            res.send({
+            res.status(400).send({
                 message: `Cannot delete language object with id=${id}. Maybe language was not found!`
             });
         }

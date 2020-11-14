@@ -82,7 +82,7 @@ exports.update = (req, res) => {
                 message: "Comment object was updated successfully."
             });
         } else {
-            res.send({
+            res.status(400).send({
                 message: `Cannot update Comment with id=${id}. Maybe Comment was not found or req.body is empty!`
             });
         }
@@ -108,7 +108,7 @@ exports.delete = (req, res) => {
                 message: "Comment was deleted successfully!"
             });
         } else {
-            res.send({
+            res.status(400).send({
                 message: `Cannot delete Comment with id=${id}. Maybe Comment was not found!`
             });
         }

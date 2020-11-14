@@ -17,4 +17,7 @@ router.delete("/delete/:id", Movies.delete);
 //Find movies by aprox name
 router.get("/searchbyaproxname/:name", Movies.searchByAproxName);
 
+//Calc average movie grade
+router.get("/calcavggrade/:id", Movies.calcAvgGrade);
+
 module.exports = router;
