@@ -14,4 +14,7 @@ router.put("/update/:id", Movies.update);
 //Delete an existing movie
 router.delete("/delete/:id", Movies.delete);
 
+//Find movies by aprox name
+router.get("/searchbyaproxname/:name", Movies.searchByAproxName);
+
 module.exports = router;
