@@ -8,7 +8,7 @@
 }
 
 body {
-    background: #A8DADC;
+    background: #E2F3F3;
 }
 
 body .modal {
@@ -18,6 +18,8 @@ body .modal {
     justify-content: center;
     align-items: center;
 }
+
+/* Estilos para la barra de navegación */
 
 nav {
     background: #1D3557;
@@ -72,12 +74,6 @@ nav ul .logo {
     cursor: pointer;
 }
 
-.icon:hover {
-    background: #457B9D;
-    cursor: pointer;
-    color: white;
-}
-
 nav ul .logo .logo-label {
     border: 1px solid #cccccc;
     padding: 2px 8px;
@@ -104,14 +100,6 @@ nav ul .search-icon input {
     color: #000;
     font-size: 16px;
     border-radius: 5px 0 0 5px;
-}
-
-.icon {
-    height: 100%;
-    border: none;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
 }
 
 .nav-icon {
@@ -146,14 +134,7 @@ nav ul .text-icon {
     color: white;
 }
 
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.4);
-    margin: auto;
-    visibility: hidden;
-}
+/* Botones de nav-bar para activar los modal */
 
 #btn-nav-add:checked~.modal {
     visibility: visible;
@@ -171,6 +152,38 @@ nav ul .text-icon {
     visibility: visible;
 }
 
+/* La clase icon, se puede utilizar para 
+dar la forma y el destaque de los labels /botones  */
+
+.icon {
+    height: 100%;
+    border: none;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.icon:hover {
+    background: #457B9D;
+    cursor: pointer;
+    color: white;
+}
+
+/* -- Esta es la sección de los modal --*/
+
+/* Este es el lienzo principal, para cubrir toda la ventana */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    margin: auto;
+    visibility: hidden;
+}
+
+/* Modal de recomendaciones */
+
 .modal .modal-advice {
     width: 500px;
     height: 300px;
@@ -181,6 +194,8 @@ nav ul .text-icon {
     visibility: hidden;
 }
 
+/* Modal de agregar película */
+
 .modal .modal-add {
     width: 500px;
     height: 600px;
@@ -190,6 +205,59 @@ nav ul .text-icon {
     position: absolute;
     visibility: hidden;
 }
+
+/* Modal para agregar comentario */
+
+.modal .modal-comment {
+    width: 500px;
+    height: 300px;
+    margin: 12px;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    visibility: hidden;
+}
+
+/* El botón de la sección de comentarios */
+
+.comment-icon {
+    width: 200px;
+    padding: 5px;
+    background: #E63946;
+    color: white;
+    right: 10px;
+    position: absolute;
+    text-align: center;
+    height: 30px;
+}
+
+/* Sección de contenido para modal de comentarios */
+
+.modal .modal-comment .comment-content {
+    margin-top: 50px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 400px;
+}
+
+/* Espacio para ingreso de comentarios para modal de comentarios */
+
+.user-comment {
+    border: #ccc solid 1px;
+    border-radius: 10px;
+    background: white;
+    overflow: hidden;
+    height: 140px;
+    resize: none;
+    padding: 10px 0;
+    overflow-y: scroll;
+}
+
+/* Secciones header y footer para los modales
+    -> Header para el título
+    -> Buttons para el footer
+*/
 
 .modal-header {
     position: absolute;
@@ -219,6 +287,85 @@ nav ul .text-icon {
     bottom: 10px;
 }
 
+/* Estilo para agregar forms*/
+
+.form-card {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    margin-top: 50px;
+}
+
+/* Da estilo a las columnas del form, dos columnas de 200px */
+
+.form-attributes {
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 200px 200px;
+}
+
+/* Estilo para etiquetas en el form o en otra seccion
+ para cada entrada en el form */
+
+.form-label {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    color: #666;
+}
+
+/* Tipo de entrada para el form (El input) */
+
+.form-input {
+    margin: 5px;
+    height: 35px;
+    background: #eee;
+    border: 0.5px solid;
+    border-color: #999;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    padding: 0 10px;
+    align-items: center;
+    text-align: center;
+}
+
+/* Elimina el borde de un form-input dentro de un div */
+
+div .form-input {
+    border: none;
+}
+
+/* Estilo para el ingreso de un archivo como entrada */
+
+.file-input {
+    visibility: hidden;
+    overflow: hidden;
+    z-index: -1;
+    position: absolute;
+}
+
+.file-input+label {
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+    background: #E63946;
+    border: 1px white solid;
+    border-radius: 5px;
+    padding: 8px 10px 0 10px;
+    color: white;
+}
+
+/* Clase para ocultar un componente */
+
+.hidden {
+    display: none;
+}
+
+/* Botones Aceptar y Cancelar */
+
 .btn-ok {
     height: 40px;
     padding: 10px;
@@ -233,41 +380,19 @@ nav ul .text-icon {
     background: #b6afac;
 }
 
-.form-card {
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    margin: 20px;
-    margin-top: 50px;
-}
+/* Boton de agregar comentario */
 
-.form-attributes {
-    align-items: center;
-    justify-content: center;
-    display: grid;
-    grid-template-columns: 200px 200px;
-}
-
-.form-input {
-    margin: 5px;
-    height: 35px;
-    background: #eee;
-    border: 0.5px solid;
-    border-color: #999;
-    border-radius: 5px;
-    font-size: 16px;
-    align-content: center;
-    outline: none;
-    padding: 0 10px;
-}
-
-.form-label {
-    font-size: 16px;
-    text-align: center;
-    margin-top: 10px;
-    color: #666;
-}
-
-.hidden {
+#btn-comment {
     display: none;
+    visibility: hidden;
+}
+
+/* Sección para modal de comentarios */
+
+#btn-comment:checked~.modal {
+    visibility: visible;
+}
+
+#btn-comment:checked~.modal .modal-comment {
+    visibility: visible;
 }

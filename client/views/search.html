@@ -4,23 +4,28 @@
 <head>
     <meta charset="utf-8">
     <title>MyMovie - Búsqueda</title>
-    <link rel="stylesheet" href="css/table.css" type="text/css" />
+    <link rel="stylesheet" href="css/search.css" type="text/css" />
     <link rel="stylesheet" href="css/main.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body>
-    <!-- Search file -->
+    <!-- Sección para listar la búsqueda de películas-->
     <div class="search-card">
         <div>
+            <!-- Despliegue de lista vertical -->
             <ul class="vertical-list">
+                <!-- Header de la lista -->
                 <li class="list-header">
                     <label class="column">Películas</label>
                     <label class="column">MetaScore</label>
                 </li>
+                <!-- Fila de la lista -->
                 <li class="row-list">
+                    <!-- Celda Izquierda -->
                     <label class="column left">Película</label>
+                    <!-- Celda Derecha -->
                     <label class="column right">10</label>
                 </li>
                 <li class="row-list">
@@ -30,6 +35,8 @@
             </ul>
         </div>
     </div>
+
+    <!-- Esta sección es general para todas las vistas (Hay que buscar la manera de importarla) -->
 
     <!-- Hidden inputs -->
     <input class="hidden" type="checkbox" id="btn-nav-add">
@@ -45,7 +52,7 @@
             </li>
             <li class="search-icon">
                 <input id="search-bar" type="search" placeholder="Buscar">
-                <label id="btn-search" class="icon nav-icon">
+                <label id="search-bar" class="icon nav-icon">
                     <span class="fas fa-search"></span>
                 </label>
             </li>
@@ -99,9 +106,17 @@
                     </select>
 
                     <label class="form-label">Estilo</label>
+                    <label class="form-label">Imagen</label>
                     <select class="form-input">
                         <option *ngFor="let item of list" [value]="item">Estilo</option>
                     </select>
+                    <div class="form-input">
+                        <input type="file" id="movie-image" class="file-input">
+                        <label for="movie-image" class="icon">
+                            Subir archivo
+                            <span class="fa fa-upload"></span>
+                        </label>
+                    </div>
                 </ul>
             </div>
             <ul class="modal-buttons">
@@ -129,6 +144,32 @@
             <ul class="modal-buttons">
                 <label for="btn-nav-advice" id="btn-accept-movie" class="icon btn-ok">Me siento con suerte</label>
                 <label for="btn-nav-advice" id="btn-cancel-movie" class="icon btn-wrong">Cancelar</label>
+            </ul>
+        </div>
+        <div class="modal-comment">
+            <label class="modal-header">Agregar comentario</label>
+            <div class="comment-content">
+                <label>
+                    <label class="form-label">Nota</label>
+                    <select id="user-grade" class="form-input">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </label>
+                <textarea type="text" id="user-comment" class="form-input user-comment"></textarea>
+            </div>
+            <ul class="modal-buttons">
+                <label for="btn-comment" id="btn-add-comment" class="icon btn-ok">Comentar</label>
+                <label for="btn-comment" id="btn-cancel-comment" class="icon btn-wrong">Cancelar</label>
             </ul>
         </div>
     </div>

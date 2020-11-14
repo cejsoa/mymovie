@@ -1,3 +1,6 @@
+/* Seción de tabla de búsqueda 
+para la sección de búsquedas */
+
 body .search-card {
     justify-content: center;
     position: absolute;
@@ -7,6 +10,8 @@ body .search-card {
     bottom: 0px;
 }
 
+/* Lista vertical de la tabla */
+
 .vertical-list {
     align-content: center;
     border-radius: 5px;
@@ -15,6 +20,8 @@ body .search-card {
     background-color: aliceblue;
     bottom: 10px;
 }
+
+/* Fila de la lista vertical */
 
 .row-list {
     padding: 10px;
@@ -36,9 +43,13 @@ body .search-card {
     cursor: pointer;
 }
 
+/* Etiquetas en la lista vertical */
+
 .row-list label {
     cursor: pointer;
 }
+
+/* Secciones de columnas para cada fila */
 
 .colum {
     position: absolute;
@@ -49,11 +60,14 @@ body .search-card {
 .left {
     left: 10px;
 }
+
 .right {
     right: 10px;
     padding: 0 45px;
     border-left: 1px #ccc solid;
 }
+
+/* Header de la lista */
 
 .list-header {
     padding: 10px;
