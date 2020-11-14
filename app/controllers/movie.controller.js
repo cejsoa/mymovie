@@ -82,7 +82,7 @@ exports.update = (req, res) => {
           message: "Movie was updated successfully."
         });
       } else {
-        res.send({
+        res.status(400).send({
           message: `Cannot update Movie with id=${id}. Maybe Movie was not found or req.body is empty!`
         });
       }
@@ -108,7 +108,7 @@ exports.delete = (req, res) => {
           message: "Movie was deleted successfully!"
         });
       } else {
-        res.send({
+        res.status(400).send({
           message: `Cannot delete Movie with id=${id}. Maybe Movie was not found!`
         });
       }
@@ -123,11 +123,11 @@ exports.delete = (req, res) => {
 //Find movies by aproximate name
 
 exports.searchByAproxName = (req, res) => {
-  var name = req.params.name;
+  const name = req.params.name;
   Movies.findAll({
     where: {
       NameMovie: {
-        [Op.like]: name+'%'
+        [Op.like]: '%'+name+'%'
       }
     }
   })
@@ -148,3 +148,26 @@ exports.searchByAproxName = (req, res) => {
       });
   });
 };
+
+//Calculate grade by average grade of comments
+exports.calcAvgGrade = (req, res) => {
+  const id = req.params.id;
+
+  Movies.sequelize.query(`SELECT AVG(Grade) as AvgGrade FROM Comments WHERE IdMovie = ${id};`)
+  .then(([data, metadata]) => {
+    if(data){
+      res.send(data[0])
+    } else {
+      res.status(404).send(
+        {
+          message: "Resource not found"
+        })
+    }
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).send({
+      message: "Error retrieving average grade"
+      });
+  });
+}
