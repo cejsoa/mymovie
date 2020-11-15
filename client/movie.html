@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>MyMovie - Película</title>
+    <!-- Se deben importar los estilos -->
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+    <link rel="stylesheet" href="css/movie.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Este es par acargar una imagen cualquiera en el perfil (Luego se carga desde la base) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+    <!-- Sección generla del perfil de la película -->
+    <div class="profile">
+        <!-- Header con la image; el título y la nota -->
+        <div class="profile-header">
+            <!-- Imagen -->
+            <div class="image">
+                <img src="https://picsum.photos/200/300" alt="Avatar" class="avatar">
+            </div>
+            <!-- Sección 2 de data  -->
+            <div class="data-header">
+                <!-- Título -->
+                <label class="title">
+                    Película
+                </label>
+                <!-- Nota -->
+                <label class="score">
+                    10
+                </label>
+            </div>
+        </div>
+        <!-- Cuerpo del perfil, tiene la información de la película -->
+        <div class="profile-body">
+            <!-- Se despliega la lista -->
+            <ul class="info-list">
+                <!-- Fila de la lista (con dos columnas) -->
+                <li class="info-argument">
+                    <!-- Tipo de información -->
+                    <label class="argument">
+                        Director
+                    </label>
+                    <!-- Dato de esa información -->
+                    <label class="argument">
+                        Jose Ortega González
+                    </label>
+                </li>
+                <li class="info-argument">
+                    <label class="argument">
+                        Año
+                    </label>
+                    <label class="argument">
+                        1998
+                    </label>
+                </li>
+                <li class="info-argument">
+                    <label class="argument">
+                        Nota IMDB
+                    </label>
+                    <label class="argument">
+                        10
+                    </label>
+                </li>
+                <li class="info-argument">
+                    <label class="argument">
+                        Año
+                    </label>
+                    <label class="argument">
+                        1998
+                    </label>
+                </li>
+                <li class="info-argument">
+                    <label class="argument">
+                        Año
+                    </label>
+                    <label class="argument">
+                        1998
+                    </label>
+                </li>
+                <li class="info-argument">
+                    <label class="argument">
+                        Año
+                    </label>
+                    <label class="argument">
+                        1998
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <!-- Sección de comentarios -->
+        <div class="profile-comments">
+            <!-- Subsección de comentarios (Header en este caso) -->
+            <ul class="comment-section">
+                <!-- Tipo de header (dos columnas) -->
+                <li class="comment comment-header">
+                    <!-- Título de la sección -->
+                    <label for="" class="title">Comentarios</label>
+                    <!-- Botón de agregar comentarios -->
+                    <label for="btn-comment" class="icon comment-icon">
+                        Agregar comentario
+                        <span class="fa fa-comment"></span>
+                    </label>
+                </li>
+            </ul>
+            <!-- Subseción de comentarios (Los comentarios) -->
+            <ul class="comment-section">
+                <!-- Comentario -->
+                <li class="comment">
+                    <!-- Nota del comentario -->
+                    <label>Nota</label>
+                    <!-- Texto del comentario -->
+                    <p class="comment-text">Soy un comentario</p>
+                </li>
+                <li class="comment">
+                    <label>Nota</label>
+                    <p class="comment-text">Soy un comentario</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Se carga la barra de navegación y los componentes HTML globales -->
+    <div id="global-nav-bar"></div>
+</body>
+<script src="js/navbar.js"></script>
+
+</html>
