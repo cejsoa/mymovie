@@ -1,3 +1,5 @@
+var list_items = []
+
 // Child node creation to append in html search list
 const renderItem = (item) => {
     // Lista node
@@ -22,10 +24,19 @@ const renderItem = (item) => {
     return list_child;
 };
 
+// Return movie view
+function get_movie() {
+    window.location.href = "/movie/" + this.value;
+}
+
+
 // Cicly to append rows in the search list
 function fill_html(data) {
     for (let i = 0; i < data.length; i++) {
-        document.getElementById("search-list").append(renderItem(data[i]));
+        let item = renderItem(data[i]);
+        list_items.push(item);
+        item.addEventListener("click", get_movie);
+        document.getElementById("search-list").append(item);
     }
 }
 
