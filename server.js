@@ -45,3 +45,5 @@ var server = app.listen(port, function () {
    
    console.log("Listening at http://%s:%s", host, port)
 })
+
+module.exports = app;
