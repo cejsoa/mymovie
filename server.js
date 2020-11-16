@@ -5,14 +5,31 @@ const db = require("./app/models");
 const dbConfig = require("./app/config/db.config.js");
 
 var app = express();
-require("./app/routes/movie.routes")(app);
-require("./app/routes/recom.routes")(app);
+
+// Main path client stablished
+app.use(express.static(__dirname + '/client'));
+
+//Routes includes
+const moviesRoutes = require("./app/routes/movie.routes");
+const commentRoutes = require("./app/routes/comment.routes");
+const genreRoutes = require("./app/routes/genre.routes");
+const imageRoutes = require("./app/routes/image.routes");
+const languageRoutes = require("./app/routes/language.routes");
+const styleRoutes = require("./app/routes/style.routes");
+const viewRoutes = require("./app/routes/view.routes");
 
 app.use(cors());
-// parse requests of content-type - application/json
 app.use(bodyParser.json());
-// parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//Routes
+app.use("/api/movies/", moviesRoutes);
+app.use("/api/comments/", commentRoutes);
+app.use("/api/genres/", genreRoutes);
+app.use("/api/images/", imageRoutes);
+app.use("/api/languages/", languageRoutes);
+app.use("/api/styles/", styleRoutes);
+app.use("/", viewRoutes);
 
 db.sequelize.authenticate().then(() => {
   console.log('Connection to the database established successfully')
@@ -21,14 +38,10 @@ db.sequelize.authenticate().then(() => {
     console.log('Unable to conect with the database \n Check the database status or your conection credentials')
 })
 
-app.get('/', function (req, res) {
-   res.send('Hello World cris');
-})
-
 const port = process.env.PORT || 3000
 
 var server = app.listen(port, function () {
    var host = server.address().address
    
-   console.log("Example app listening at http://%s:%s", host, port)
+   console.log("Listening at http://%s:%s", host, port)
 })
