@@ -16,6 +16,7 @@ const genreRoutes = require("./app/routes/genre.routes");
 const imageRoutes = require("./app/routes/image.routes");
 const languageRoutes = require("./app/routes/language.routes");
 const styleRoutes = require("./app/routes/style.routes");
+const recomRoutes = require("./app/routes/recom.routes");
 const viewRoutes = require("./app/routes/view.routes");
 
 app.use(cors());
@@ -29,6 +30,7 @@ app.use("/api/genres/", genreRoutes);
 app.use("/api/images/", imageRoutes);
 app.use("/api/languages/", languageRoutes);
 app.use("/api/styles/", styleRoutes);
+app.use("/api/recom/", recomRoutes);
 app.use("/", viewRoutes);
 
 db.sequelize.authenticate().then(() => {
