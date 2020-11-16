@@ -58,7 +58,7 @@ function get_movie_info() {
         .then(response => response.json())
         .then(data => render_movie(data));
 
-    fetch("/api/comments/findAll")
+    fetch("/api/comments/findOne/" + movie_id)
         .then(response => response.json())
         .then(data => fill_comments(data));
 }
