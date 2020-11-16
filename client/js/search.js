@@ -34,9 +34,16 @@ function fill_list() {
     let pageURL = window.location.href.split('/');
     let item = pageURL[pageURL.length - 1];
 
-    fetch("/api/movies/searchbyaproxname/" + item)
-        .then(response => response.json())
-        .then(data => fill_html(data));
+    if (window.location.href.toString().search("/recom/") != -1) {
+        fetch("/api/recom/results/" + item)
+            .then(response => response.json())
+            .then(data => fill_html(data));
+    }
+    else {
+        fetch("/api/movies/searchbyaproxname/" + item)
+            .then(response => response.json())
+            .then(data => fill_html(data));
+    }
 }
 
 fill_list();

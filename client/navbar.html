@@ -100,21 +100,26 @@
         <!-- Form para solicitar el los atributos -->
         <div class="form-card">
             <ul class="form-attributes">
-                <label class="form-label">Nombre de película</label>
-                <label class="form-label">Director</label>
-                <input class="form-input" type="text" placeholder="Película">
-                <input class="form-input" type="text" placeholder="Director">
+                <label class="form-label">Género de película</label>
+                <label class="form-label">Favorito</label>
+                <input class="form-input" type="text" placeholder="Género" id="recom-gen">
+                <input class="form-input" type="number" min="0" max="35" placeholder="Favorito" id="recom-fav">
 
-                <label class="form-label">Año</label>
-                <label class="form-label">Calificación comunidad</label>
-                <input class="form-input" type="number" min="0" placeholder="Año">
-                <input class="form-input" type="number" min="0" max="10" placeholder="Calificación">
+                <label class="form-label">Nota de la comunidad</label>
+                <label class="form-label">Nota de IMDB</label>
+                <input class="form-input" type="number" min="0" max="35" placeholder="Nota comunidad" id="recom-comm">
+                <input class="form-input" type="number" min="0" max="35" placeholder="Nota IMDB" id="recom-imdb">
+
+                <label class="form-label">Nota de MetaScore</label>
+                <label class="form-label">Índice de popularidad</label>
+                <input class="form-input" type="number" min="0" max="35" placeholder="Nota MetaScore" id="recom-meta">
+                <input class="form-input" type="number" min="0" max="35" placeholder="Popularidad" id="recom-pop">
             </ul>
         </div>
         <!-- Footer -->
         <ul class="modal-buttons">
-            <label for="btn-nav-advice" id="btn-accept-movie" class="icon btn-ok">Me siento con suerte</label>
-            <label for="btn-nav-advice" id="btn-cancel-movie" class="icon btn-wrong">Cancelar</label>
+            <label for="btn-nav-advice" id="btn-accept-recom" class="icon btn-ok">Me siento con suerte</label>
+            <label for="btn-nav-advice" id="btn-cancel-recom" class="icon btn-wrong">Cancelar</label>
         </ul>
     </div>
     <!-- Modal para agregar comentarios -->
