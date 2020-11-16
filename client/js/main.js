@@ -38,17 +38,20 @@ function get_recom() {
     else if (pop.trim() == "") {
         alert("Por favor, ingrese un peso para el atributo 'Popularidad'");
     }
-    let sum = parseInt(fav) + parseInt(comm) + parseInt(imdb) + parseInt(meta) + parseInt(pop);
-    if (sum > 100) {
-        alert("La suma de las cinco categorías no puede ser mayor que 100 (valor ingresado -> " + sum + ")");
-    }
     else {
-        window.location.href = "/recom/" + gen
-            + "&" + fav
-            + "&" + comm
-            + "&" + imdb
-            + "&" + meta
-            + "&" + pop;
+
+        let sum = parseInt(fav) + parseInt(comm) + parseInt(imdb) + parseInt(meta) + parseInt(pop);
+        if (sum > 100) {
+            alert("La suma de las cinco categorías no puede ser mayor que 100 (valor ingresado -> " + sum + ")");
+        }
+        else {
+            window.location.href = "/recom/" + gen 
+                                    + "&" + fav
+                                    + "&" + comm
+                                    + "&" + imdb
+                                    + "&" + meta
+                                    + "&" + pop;
+        }
     }
 }
 
