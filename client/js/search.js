@@ -1,5 +1,3 @@
-var list_items = []
-
 // Child node creation to append in html search list
 const renderItem = (item) => {
     // Lista node
@@ -34,7 +32,6 @@ function get_movie() {
 function fill_html(data) {
     for (let i = 0; i < data.length; i++) {
         let item = renderItem(data[i]);
-        list_items.push(item);
         item.addEventListener("click", get_movie);
         document.getElementById("search-list").append(item);
     }
