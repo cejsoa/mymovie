@@ -5,7 +5,6 @@ describe('calcAvgGrade', () => {
     const res = await request(app)
       .get('/api/movies/calcavggrade/0')
     expect(res.statusCode).toEqual(200)
-    expect(typeof res.body.AvgGrade).toBe('number');
-    document();
+    expect(typeof res.body.AvgGrade).toBe('number')
   })
 })

@@ -4,7 +4,7 @@
   "description": "Web app",
   "main": "server.js",
   "scripts": {
-    "test": "jest"
+    "test": "CI=true && jest"
   },
   "repository": {
     "type": "git",
