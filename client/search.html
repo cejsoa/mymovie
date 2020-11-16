@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>MyMovie - Búsqueda</title>
-    <link rel="stylesheet" href="css/search.css" type="text/css" />
-    <link rel="stylesheet" href="css/main.css" type="text/css" />
+    <link rel="stylesheet" href="../css/search.css" type="text/css" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
@@ -15,22 +15,11 @@
     <div class="search-card">
         <div>
             <!-- Despliegue de lista vertical -->
-            <ul class="vertical-list">
+            <ul id="search-list" class="vertical-list">
                 <!-- Header de la lista -->
                 <li class="list-header">
                     <label class="column">Películas</label>
                     <label class="column">MetaScore</label>
-                </li>
-                <!-- Fila de la lista -->
-                <li class="row-list">
-                    <!-- Celda Izquierda -->
-                    <label class="column left">Película</label>
-                    <!-- Celda Derecha -->
-                    <label class="column right">10</label>
-                </li>
-                <li class="row-list">
-                    <label class="column left">Película</label>
-                    <label class="column right">10</label>
                 </li>
             </ul>
         </div>
@@ -39,6 +28,6 @@
     <!-- Se carga la barra de navegación y los componentes HTML globales -->
     <div id="global-nav-bar"></div>
 </body>
-<script src="js/navbar.js"></script>
-
+<script src="../js/main.js"></script>
+<script src="../js/search.js"></script>
 </html>
