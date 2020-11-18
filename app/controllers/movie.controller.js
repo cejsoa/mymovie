@@ -6,6 +6,7 @@ const Op = db.Sequelize.Op;
 //Find one movie object by PK
 exports.findOne = (req, res) => {
   const id = req.params.id;
+  logic.calc_popularity(data.Id);
   Movies.findByPk(id)
   .then(data => {
     if(data){
