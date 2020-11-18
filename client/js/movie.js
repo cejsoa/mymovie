@@ -19,7 +19,7 @@ const render_movie = (item) => {
 
     fetch("/api/movies/calcavggrade/" + item.Id)
         .then(response => response.json())
-        .then(data => document.getElementById("movie-community").innerText = data.calcavggrade);
+        .then(data => document.getElementById("movie-community").innerText = data.AvgGrade);
 
     fetch("/api/styles/findOne/" + item.IdStyle)
         .then(response => response.json())

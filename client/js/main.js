@@ -9,6 +9,53 @@ const get_search = () => {
     }
 }
 
+const render_genres = (items) => {
+    let genre_movies = document.getElementById("movie-genre-id");
+    let genre_recom = document.getElementById("recom-gen");
+    items.forEach(genre => {
+        let option = document.createElement("option");
+        let option_recom = document.createElement("option");
+        option.setAttribute("value", genre.Id);
+        option_recom.setAttribute("value", genre.Id);
+        option.innerText = genre.Genre_Name;
+        option_recom.innerText = genre.Genre_Name;
+        genre_movies.appendChild(option);
+        genre_recom.appendChild(option_recom);
+    });
+}
+
+const render_styles = (items) => {
+    let styles_movies = document.getElementById("movie-style-id");
+    items.forEach(style => {
+        let option = document.createElement("option");
+        option.setAttribute("value", style.Id);
+        option.innerText = style.Style_Name;
+        styles_movies.appendChild(option);
+    });
+}
+
+const render_lang = (items) => {
+    let lang_movies = document.getElementById("movie-lang-id");
+    items.forEach(lang => {
+        let option = document.createElement("option");
+        option.setAttribute("value", lang.Id);
+        option.innerText = lang.Language_Name;
+        lang_movies.appendChild(option);
+    });
+}
+
+const render = () => {
+    fetch("/api/genres/findAll")
+        .then(resp => resp.json())
+        .then(data => render_genres(data));
+    fetch("/api/styles/findAll")
+        .then(resp => resp.json())
+        .then(data => render_styles(data));
+    fetch("/api/languages/findAll")
+        .then(resp => resp.json())
+        .then(data => render_lang(data));
+}
+
 const main_page = () => window.location.href = "/";
 
 // Recom function to load the recommendations view
@@ -59,29 +106,102 @@ function get_recom() {
             alert("El atributo 'Popularidad' tiene que ser un número entre 0 y 35");
         }
         else {
-            window.location.href = "/recom/" + gen 
-                                    + "&" + fav
-                                    + "&" + comm
-                                    + "&" + imdb
-                                    + "&" + meta
-                                    + "&" + pop;
+            window.location.href = "/recom/"
+                + gen + "&"
+                + fav + "&"
+                + comm + "&"
+                + imdb + "&"
+                + meta + "&"
+                + pop;
         }
     }
 }
+
+
+function readImage(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+}
+
+
+async function add_movie() {
+    let movie_name = document.getElementById("movie-name-id").value;
+    let movie_director = document.getElementById("movie-director-id").value;
+    let movie_genre = document.getElementById("movie-genre-id").value;
+    let movie_lang = document.getElementById("movie-lang-id").value;
+    let movie_style = document.getElementById("movie-style-id").value;
+    let movie_fav = document.getElementById("movie-fav-id").value;
+    let movie_year = document.getElementById("movie-year-id").value;
+    let movie_imdb = document.getElementById("movie-imdb-id").value;
+    let movie_metascore = document.getElementById("movie-metascore-id").value;
+    let movie_image = document.getElementById("movie-image-id");
+
+    let movie = {
+        "NameMovie": movie_name,
+        "NameDirector": movie_director,
+        "Year_M": movie_year,
+        "IdGenre": movie_genre,
+        "IdLanguage": movie_lang,
+        "Favorite": movie_fav,
+        "IMDBGrade": movie_imdb,
+        "IdStyle": movie_style,
+        "MetaScoreGrade": movie_metascore,
+        "Popularity": 0,
+        "CommunityGrade": 0,
+        "IdImage": 0
+    };
+
+    let image = {};
+
+    console.log(movie_image.files[0]);
+
+    await readImage(movie_image.files[0])
+        .then(data => image["Image_Link"] = data);
+    console.log(image);
+    
+    // await fetch("/api/images/create",
+    //     {
+    //         method: 'POST',
+    //         body: JSON.stringify(image),
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     }
+    // ).then(response => response.json())
+    //     .then(data => movie["IdImage"] = data.Id);
+
+    console.log(movie);
+
+    await fetch("/api/movies/create",
+        {
+            method: 'POST',
+            body: JSON.stringify(movie),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    ).then(response => response.json())
+        .then(data => console.log(data));
+    console.log("finalizado el agregar");
 
 const initialize_listeners = () => {
     document.getElementById("btn-search-bar").onclick = get_search;
     document.getElementById("btn-accept-recom").onclick = get_recom;
     document.getElementById("logo-button").onclick = main_page;
     document.getElementById("btn-add-comment").onclick = post_comment;
+    document.getElementById("btn-accept-movie").onclick = add_movie;
 }
 
 // This function makes a request to get the global nav bar 
-function getNavBar() {
-    fetch("/navbar")
+async function getNavBar() {
+    await fetch("/navbar")
         .then(response => response.text())
         .then(data => document.getElementById("global-nav-bar").innerHTML = data)
         .then(() => initialize_listeners());
+    render();
 }
-
-getNavBar()
+getNavBar();
