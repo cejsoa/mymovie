@@ -85,15 +85,15 @@ exports.findRecom = (req, res) => {
             {
                 if (recommended[i][7] <= 40) 
                 {
-                    grade_category = "Alto";
+                    grade_category = "Bajo";
                 }
                 else if (recommended[i][7] >= 80)
                 {
-                    grade_category = "Medio";
+                    grade_category = "Alto";
                 }
                 else 
                 {
-                    grade_category = "Bajo";
+                    grade_category = "Medio";
                 }
                 json_list.push({"Id": recommended[i][0], "NameMovie": recommended[i][1], "MetaScoreGrade": grade_category});
             }
