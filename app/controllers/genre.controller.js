@@ -59,7 +59,7 @@ exports.create = (req, res) => {
     // Save Genre in the database
     Genre.create(req.body)
     .then(data => { 
-        res.send(data);
+        res.send({Id: data.Id});
     })
     .catch(err => {
         res.status(500).send({
