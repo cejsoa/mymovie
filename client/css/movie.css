@@ -9,6 +9,7 @@
     width: 100%;
 }
 
+
 /* El header de la película que contiene:
  -> La imagen
  -> El título
@@ -104,6 +105,12 @@
     display: grid;
     grid-template-columns: 800px;
     position: relative;
+}
+
+.modify-icon {
+    background-color: #E63946;
+    color: white;
+    padding: 5px 0;
 }
 
 /* Subsección de la sección de comentarios */

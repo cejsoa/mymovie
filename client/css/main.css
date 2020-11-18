@@ -152,6 +152,14 @@ nav ul .text-icon {
     visibility: visible;
 }
 
+#btn-modify:checked~.modal .modal-modify {
+    visibility: visible;
+}
+
+#btn-modify:checked~.modal {
+    visibility: visible;
+}
+
 /* La clase icon, se puede utilizar para 
 dar la forma y el destaque de los labels /botones  */
 
@@ -197,6 +205,16 @@ dar la forma y el destaque de los labels /botones  */
 /* Modal de agregar película */
 
 .modal .modal-add {
+    width: 500px;
+    height: 500px;
+    margin: 12px;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    visibility: hidden;
+}
+
+.modal .modal-modify {
     width: 500px;
     height: 500px;
     margin: 12px;

@@ -12,35 +12,50 @@ const get_search = () => {
 const render_genres = (items) => {
     let genre_movies = document.getElementById("movie-genre-id");
     let genre_recom = document.getElementById("recom-gen");
+    let genre_modify = document.getElementById("movie-genre-id-modify");
     items.forEach(genre => {
         let option = document.createElement("option");
         let option_recom = document.createElement("option");
+        let option_mod = document.createElement("option");
         option.setAttribute("value", genre.Id);
         option_recom.setAttribute("value", genre.Genre_Name);
+        option_mod.setAttribute("value", genre.Id);
         option.innerText = genre.Genre_Name;
         option_recom.innerText = genre.Genre_Name;
+        option_mod.innerText = genre.Genre_Name;
         genre_movies.appendChild(option);
         genre_recom.appendChild(option_recom);
+        genre_modify.appendChild(option_mod);
     });
 }
 
 const render_styles = (items) => {
+    let styles_modify = document.getElementById("movie-style-id-modify");
     let styles_movies = document.getElementById("movie-style-id");
     items.forEach(style => {
         let option = document.createElement("option");
+        let option_mod = document.createElement("option");
         option.setAttribute("value", style.Id);
+        option_mod.setAttribute("value", style.Id);
         option.innerText = style.Style_Name;
+        option_mod.innerText = style.Style_Name;
         styles_movies.appendChild(option);
+        styles_modify.appendChild(option_mod);
     });
 }
 
 const render_lang = (items) => {
+    let lang_modify = document.getElementById("movie-lang-id-modify");
     let lang_movies = document.getElementById("movie-lang-id");
     items.forEach(lang => {
         let option = document.createElement("option");
+        let option_mod = document.createElement("option");
         option.setAttribute("value", lang.Id);
+        option_mod.setAttribute("value", lang.Id);
         option.innerText = lang.Language_Name;
+        option_mod.innerText = lang.Language_Name;
         lang_movies.appendChild(option);
+        lang_modify.appendChild(option_mod);
     });
 }
 
@@ -138,7 +153,7 @@ async function add_movie() {
     let movie_year = document.getElementById("movie-year-id").value;
     let movie_imdb = document.getElementById("movie-imdb-id").value;
     let movie_metascore = document.getElementById("movie-metascore-id").value;
-    let movie_image = document.getElementById("movie-image-id");
+    let movie_image = document.getElementById("movie-image-id").value;
 
     let movie = {
         "NameMovie": movie_name,
@@ -152,29 +167,30 @@ async function add_movie() {
         "MetaScoreGrade": movie_metascore,
         "Popularity": 0,
         "CommunityGrade": 0,
-        "IdImage": 0
+        "IdImage": 18
     };
 
-    let image = {};
+    let image = {
+        "Image_Link": movie_image
+    };
 
-    console.log(movie_image.files[0]);
+    // console.log(movie_image.files[0]);
 
-    await readImage(movie_image.files[0])
-        .then(data => image["Image_Link"] = data);
-    console.log(image);
+    // await readImage(movie_image.files[0])
+    //     .then(data => image["Image_Link"] = data.toString());
+    // console.log(image["Image_Link"].length);
 
-    // await fetch("/api/images/create",
-    //     {
-    //         method: 'POST',
-    //         body: JSON.stringify(image),
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     }
-    // ).then(response => response.json())
-    //     .then(data => movie["IdImage"] = data.Id);
-
-    console.log(movie);
+    await fetch("/api/images/create",
+        {
+            method: 'POST',
+            body: JSON.stringify(image),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    ).then(response => response.json())
+        .catch(error => console.error('Error:', error))
+        .then(data => movie["IdImage"] = data.Id);
 
     await fetch("/api/movies/create",
         {
@@ -185,8 +201,14 @@ async function add_movie() {
             }
         }
     ).then(response => response.json())
+        .catch(error => console.error('Error:', error))
         .then(data => console.log(data));
-    console.log("finalizado el agregar");
+
+    movie_name.value = "";
+    movie_image.value = "";
+    movie_year.value = "";
+    movie_director.value = "";
+
 }
 
 const initialize_listeners = () => {
@@ -195,6 +217,7 @@ const initialize_listeners = () => {
     document.getElementById("logo-button").onclick = main_page;
     document.getElementById("btn-accept-movie").onclick = add_movie;
     document.getElementById("btn-add-comment").onclick = post_comment;
+    document.getElementById("btn-accept-movie-modify").onclick = modify_movie;
 }
 
 // This function makes a request to get the global nav bar 
