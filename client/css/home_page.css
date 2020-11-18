@@ -1,0 +1,46 @@
+.home-container {
+    width: 100%;
+    position: absolute;
+    display: grid;
+    top: 120px;
+    justify-content: center;
+}
+
+.home-movies {
+    display: grid;
+    position: relative;
+    grid-template-columns: 300px 300px 300px;
+    margin: 10px 0;
+}
+.home-item {
+    margin: 10px;
+    color: white;
+    padding: 10px;
+    background: #E63946;
+    border-radius: 10px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+}
+
+.home-item label {
+    padding: 10px;
+    margin: 5px;
+    color: black;
+    border-radius: 5px;
+    background: white;
+    align-items: center;
+}
+
+.home-item img {
+    align-items: center;
+    border-radius: 5px;
+    position: relative;
+    width: 150px;
+    width: 200px;
+}
+
+.home-item:hover {
+    transform: scale(1.02, 1.02);
+}
