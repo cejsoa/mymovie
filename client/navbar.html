@@ -2,6 +2,7 @@
 <input class="hidden" type="checkbox" id="btn-nav-add">
 <input class="hidden" type="checkbox" id="btn-nav-advice">
 <input class="hidden" type="checkbox" id="btn-comment">
+<input class="hidden" type="checkbox" id="btn-modify">
 <!-- Barra de navegación -->
 <nav class="navbar navbar-inverse">
     <ul>
@@ -43,7 +44,7 @@
     <div class="modal-add">
         <!-- Header del modal -->
         <label class="modal-header">
-            <span>Agregar una película</span>
+            <span id="title-header">Agregar película</span>
         </label>
         <!-- Form con el contenido de la película -->
         <div class="form-card">
@@ -100,13 +101,14 @@
                     <option value="false">No</option>
                     <option value="true">Si</option>
                 </select>
-                <div class="form-input">
+                <input id="movie-image-id" type="url" class="form-input" placeholder="Enlace de imagen">
+                <!-- <div class="form-input">
                     <input id="movie-image-id" type="file" class="file-input">
                     <label for="movie-image-id" class="icon">
                         Subir archivo
                         <span class="fa fa-upload"></span>
                     </label>
-                </div>
+                </div> -->
             </ul>
         </div>
         <!-- Footer (Botones) -->
@@ -172,6 +174,82 @@
         <ul class="modal-buttons">
             <label for="btn-comment" id="btn-add-comment" class="icon btn-ok">Comentar</label>
             <label for="btn-comment" id="btn-cancel-comment" class="icon btn-wrong">Cancelar</label>
+        </ul>
+    </div>
+    <div class="modal-modify">
+        <!-- Header del modal -->
+        <label class="modal-header">
+            <span id="title-header">Modificar película</span>
+        </label>
+        <!-- Form con el contenido de la película -->
+        <div class="form-card">
+            <ul class="form-attributes">
+                <label class="form-label">Nombre de película</label>
+                <label class="form-label">Director</label>
+                <input id="movie-name-id-modify" class="form-input" type="text" placeholder="Película">
+                <input id="movie-director-id-modify" class="form-input" type="text" placeholder="Director">
+
+                <label class="form-label">Año</label>
+                <label class="form-label">Nota IMDB</label>
+                <input id="movie-year-id-modify" class="form-input" type="number" min="1850" placeholder="Año">
+                <select id="movie-imdb-id-modify" class="form-input">
+                    <option value="">No definido</option>
+                    <option value="10">10</option>
+                    <option value="9">9</option>
+                    <option value="8">8</option>
+                    <option value="7">7</option>
+                    <option value="6">6</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                    <option value="0">0</option>
+                </select>
+
+                <label class="form-label">Estilo</label>
+                <label class="form-label">Calificación personal</label>
+                <select id="movie-style-id-modify" class="form-input"></select>
+                <select id="movie-metascore-id-modify" class="form-input">
+                    <option value="">No definido</option>
+                    <option value="10">10</option>
+                    <option value="9">9</option>
+                    <option value="8">8</option>
+                    <option value="7">7</option>
+                    <option value="6">6</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                    <option value="0">0</option>
+                </select>
+
+                <label class="form-label">Género</label>
+                <label class="form-label">Idioma</label>
+                <select id="movie-genre-id-modify" class="form-input"></select>
+                <select id="movie-lang-id-modify" class="form-input"></select>
+
+                <label class="form-label">Es Favorita?</label>
+                <label class="form-label">Imagen</label>
+                <select id="movie-fav-id-modify" class="form-input">
+                    <option value="false">No</option>
+                    <option value="true">Si</option>
+                </select>
+                <input id="movie-image-id-modify" type="url" class="form-input" placeholder="Enlace de imagen">
+                <!-- <div class="form-input">
+                    <input id="movie-image-id" type="file" class="file-input">
+                    <label for="movie-image-id" class="icon">
+                        Subir archivo
+                        <span class="fa fa-upload"></span>
+                    </label>
+                </div> -->
+            </ul>
+        </div>
+        <!-- Footer (Botones) -->
+        <ul class="modal-buttons">
+            <label for="btn-modify" id="btn-accept-movie-modify" class="icon btn-ok">Agregar</label>
+            <label for="btn-modify" id="btn-cancel-movie-modify" class="icon btn-wrong">Cancelar</label>
         </ul>
     </div>
 </div>
