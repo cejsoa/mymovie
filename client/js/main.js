@@ -1,3 +1,12 @@
+function arguments_validation(arguments) {
+    for (let i = 0; i < arguments.length; i++) {
+        if (arguments[i] === "") {
+            return false;
+        }
+    }
+    return true;
+}
+
 // Search funtion to load the search view
 const get_search = () => {
     let name = document.getElementById("search-bar").value;
@@ -144,70 +153,71 @@ function readImage(file) {
 
 
 async function add_movie() {
-    let movie_name = document.getElementById("movie-name-id").value;
-    let movie_director = document.getElementById("movie-director-id").value;
-    let movie_genre = document.getElementById("movie-genre-id").value;
-    let movie_lang = document.getElementById("movie-lang-id").value;
-    let movie_style = document.getElementById("movie-style-id").value;
-    let movie_fav = document.getElementById("movie-fav-id").value;
-    let movie_year = document.getElementById("movie-year-id").value;
-    let movie_imdb = document.getElementById("movie-imdb-id").value;
-    let movie_metascore = document.getElementById("movie-metascore-id").value;
-    let movie_image = document.getElementById("movie-image-id").value;
+    let movie_name = document.getElementById("movie-name-id").value.trim();
+    let movie_director = document.getElementById("movie-director-id").value.trim();
+    let movie_genre = document.getElementById("movie-genre-id").value.trim();
+    let movie_lang = document.getElementById("movie-lang-id").value.trim();
+    let movie_style = document.getElementById("movie-style-id").value.trim();
+    let movie_fav = document.getElementById("movie-fav-id").value.trim();
+    let movie_year = document.getElementById("movie-year-id").value.trim();
+    let movie_imdb = document.getElementById("movie-imdb-id").value.trim();
+    let movie_metascore = document.getElementById("movie-metascore-id").value.trim();
+    let movie_image = document.getElementById("movie-image-id").value.trim();
 
-    let movie = {
-        "NameMovie": movie_name,
-        "NameDirector": movie_director,
-        "Year_M": movie_year,
-        "IdGenre": movie_genre,
-        "IdLanguage": movie_lang,
-        "Favorite": movie_fav,
-        "IMDBGrade": movie_imdb,
-        "IdStyle": movie_style,
-        "MetaScoreGrade": movie_metascore,
-        "Popularity": 0,
-        "CommunityGrade": 0,
-        "IdImage": 18
-    };
+    let arguments = [movie_name, movie_director, movie_genre,
+        movie_lang, movie_style, movie_fav, movie_year, movie_image];
+        
+    if (arguments_validation(arguments)) {
+        let movie = {
+            "NameMovie": movie_name,
+            "NameDirector": movie_director,
+            "Year_M": movie_year,
+            "IdGenre": movie_genre,
+            "IdLanguage": movie_lang,
+            "Favorite": movie_fav,
+            "IMDBGrade": movie_imdb,
+            "IdStyle": movie_style,
+            "MetaScoreGrade": movie_metascore,
+            "Popularity": 0,
+            "CommunityGrade": 0,
+            "IdImage": 18
+        };
 
-    let image = {
-        "Image_Link": movie_image
-    };
+        let image = {
+            "Image_Link": movie_image
+        };
 
-    // console.log(movie_image.files[0]);
-
-    // await readImage(movie_image.files[0])
-    //     .then(data => image["Image_Link"] = data.toString());
-    // console.log(image["Image_Link"].length);
-
-    await fetch("/api/images/create",
-        {
-            method: 'POST',
-            body: JSON.stringify(image),
-            headers: {
-                'Content-Type': 'application/json'
+        await fetch("/api/images/create",
+            {
+                method: 'POST',
+                body: JSON.stringify(image),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }
-        }
-    ).then(response => response.json())
-        .catch(error => console.error('Error:', error))
-        .then(data => movie["IdImage"] = data.Id);
+        ).then(response => response.json())
+            .catch(error => console.error('Error:', error))
+            .then(data => movie["IdImage"] = data.Id);
 
-    await fetch("/api/movies/create",
-        {
-            method: 'POST',
-            body: JSON.stringify(movie),
-            headers: {
-                'Content-Type': 'application/json'
+        await fetch("/api/movies/create",
+            {
+                method: 'POST',
+                body: JSON.stringify(movie),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }
-        }
-    ).then(response => response.json())
-        .catch(error => console.error('Error:', error))
-        .then(data => console.log(data));
+        ).then(response => response.json())
+            .catch(error => console.error('Error:', error))
+            .then(data => console.log(data));
 
-    movie_name.value = "";
-    movie_image.value = "";
-    movie_year.value = "";
-    movie_director.value = "";
+        movie_name.value = "";
+        movie_image.value = "";
+        movie_year.value = "";
+        movie_director.value = "";
+    } else {
+        alert("Los campos a excepción de la Nota IMDB y MetaScore son obligatorios");
+    }
 
 }
 

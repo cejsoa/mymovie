@@ -97,34 +97,38 @@ function post_comment() {
 const send_modified_values = async (movie, image) => {
     let id_movie = window.location.href.split("/");
     id_movie = id_movie[id_movie.length - 1];
+    if (id_movie != undefined && id_movie != null) {
 
-    console.log(id_movie);
+        if (Object.keys(image).length !== 0) {
+            await fetch("/api/images/create",
+                {
+                    method: 'POST',
+                    body: JSON.stringify(image),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+            ).then(response => response.json())
+                .catch(error => console.error('Error:', error))
+                .then(data => movie["IdImage"] = data.Id);
+        }
 
-    if (id_movie != undefined || id_movie != null) {
-        await fetch("/api/images/create",
-            {
-                method: 'POST',
-                body: JSON.stringify(image),
-                headers: {
-                    'Content-Type': 'application/json'
+        if (Object.keys(movie).length !== 0) {
+            await fetch("/api/movies/update/" + id_movie,
+                {
+                    method: 'PUT',
+                    body: JSON.stringify(movie),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
                 }
-            }
-        ).then(response => response.json())
-            .catch(error => console.error('Error:', error))
-            .then(data => movie["IdImage"] = data.Id);
-        
-        console.log(movie);
-        await fetch("/api/movies/update/" + id_movie,
-            {
-                method: 'PUT',
-                body: JSON.stringify(movie),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-        ).then(response => response.json())
-            .catch(error => console.error('Error:', error))
-            .then(data => console.log(data));
+            ).then(response => response.json())
+                .catch(error => console.error('Error:', error))
+                .then(data => console.log(data));
+        }
+        else {
+            alert("No hay datos para modificar");
+        }
     }
 }
 
