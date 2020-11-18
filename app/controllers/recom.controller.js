@@ -10,24 +10,9 @@ exports.findRecom = (req, res) => {
     const imdb = req.params.imdb;
     const meta = req.params.meta;
     const pop = req.params.pop;
-    Genres.hasMany(Movies)
-    Movies.belongsTo(Genres, {
-        foreignKey: 'IdGenre'
-    });
-    Movies.findAll({
-        attributes: ['Id', 'NameMovie', 'Favorite', 'CommunityGrade', 
-                    'IMDBGrade', 'MetaScoreGrade', 'Popularity'],
-        include: [{
-            model: Genres,
-            required: true,
-            attributes: [],
-            where: {
-                Genre_Name: genre
-            }
-            }],
-        raw : true
-    })
-    .then(data => {
+    Movies.sequelize.query(`SELECT Movies.Id, NameMovie, Favorite, CommunityGrade, IMDBGrade, MetaScoreGrade, Popularity 
+    FROM Movies INNER JOIN Genres ON Movies.IdGenre = Genres.Id AND Genres.Genre_Name = \'${genre}\';`)
+    .then(([data, metadata]) => {
         if(data){
             var array_movies = [];
             array_movies.push(data);
@@ -85,15 +70,15 @@ exports.findRecom = (req, res) => {
             {
                 if (recommended[i][7] <= 40) 
                 {
-                    grade_category = "Alto";
+                    grade_category = "Bajo";
                 }
                 else if (recommended[i][7] >= 80)
                 {
-                    grade_category = "Medio";
+                    grade_category = "Alto";
                 }
                 else 
                 {
-                    grade_category = "Bajo";
+                    grade_category = "Medio";
                 }
                 json_list.push({"Id": recommended[i][0], "NameMovie": recommended[i][1], "MetaScoreGrade": grade_category});
             }

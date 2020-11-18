@@ -59,7 +59,7 @@ exports.create = (req, res) => {
   // Save Movie in the database
   Movies.create(req.body)
     .then(data => { 
-      res.send(data);
+      res.send({Id: data.Id});
     })
     .catch(err => {
       res.status(500).send({
@@ -124,14 +124,8 @@ exports.delete = (req, res) => {
 
 exports.searchByAproxName = (req, res) => {
   const name = req.params.name;
-  Movies.findAll({
-    where: {
-      NameMovie: {
-        [Op.like]: '%'+name+'%'
-      }
-    }
-  })
-  .then(data => {
+  Movies.sequelize.query(`SELECT * FROM Movies WHERE Movies.NameMovie LIKE \'%${name}%\';`)
+  .then(([data, metadata]) => {
     if(data){
       res.send(data)
     } else {

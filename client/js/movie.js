@@ -1,5 +1,7 @@
 const render_movie = (item) => {
-    document.getElementById("movie-title").innerText = item.NameMovie;
+    let movie_title = document.getElementById("movie-title");
+    movie_title.innerText = item.NameMovie;
+    movie_title.setAttribute("value", item.Id);
     document.getElementById("movie-director").innerText = item.NameDirector;
     document.getElementById("movie-year").innerText = item.Year_M;
     document.getElementById("movie-fav").innerText = item.Favorite;
@@ -50,6 +52,10 @@ const fill_comments = (items) => {
     });
 }
 
+const append_comment = (comment) => {
+    document.getElementById("comment-section-id").appendChild(render_comments(comment));
+}
+
 function get_movie_info() {
     let movie = window.location.href.split("/");
     let movie_id = movie[movie.length - 1];
@@ -63,4 +69,27 @@ function get_movie_info() {
         .then(data => fill_comments(data));
 }
 
-get_movie_info()
+function post_comment() {
+    let id = window.location.href.split('/');
+    id = id[id.length - 1];
+    let value = document.getElementById("user-grade").value;
+    let comment = document.getElementById("user-comment").value.trim();
+    
+    if (comment == "") {
+        alert("Por favor, ingrese un comentario");
+    }
+    else {
+        let item = {"IdMovie": id, "Grade": value, "Comment": comment};
+        fetch("/api/comments/create", {
+            method: 'POST',
+            body: JSON.stringify(item),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response.json())
+        .catch(error => console.error('Error:', error))
+        .then(() => append_comment(item));
+    }
+}
+
+get_movie_info();
