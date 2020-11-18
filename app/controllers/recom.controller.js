@@ -10,24 +10,9 @@ exports.findRecom = (req, res) => {
     const imdb = req.params.imdb;
     const meta = req.params.meta;
     const pop = req.params.pop;
-    Genres.hasMany(Movies)
-    Movies.belongsTo(Genres, {
-        foreignKey: 'IdGenre'
-    });
-    Movies.findAll({
-        attributes: ['Id', 'NameMovie', 'Favorite', 'CommunityGrade', 
-                    'IMDBGrade', 'MetaScoreGrade', 'Popularity'],
-        include: [{
-            model: Genres,
-            required: true,
-            attributes: [],
-            where: {
-                Genre_Name: genre
-            }
-            }],
-        raw : true
-    })
-    .then(data => {
+    Movies.sequelize.query(`SELECT Movies.Id, NameMovie, Favorite, CommunityGrade, IMDBGrade, MetaScoreGrade, Popularity 
+    FROM Movies INNER JOIN Genres ON Movies.IdGenre = Genres.Id AND Genres.Genre_Name = \'${genre}\';`)
+    .then(([data, metadata]) => {
         if(data){
             var array_movies = [];
             array_movies.push(data);
