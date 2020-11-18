@@ -59,7 +59,7 @@ exports.create = (req, res) => {
   // Save Movie in the database
   Movies.create(req.body)
     .then(data => { 
-      res.send(data);
+      res.send({Id: data.Id});
     })
     .catch(err => {
       res.status(500).send({
