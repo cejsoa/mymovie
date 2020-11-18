@@ -16,7 +16,7 @@ const render_genres = (items) => {
         let option = document.createElement("option");
         let option_recom = document.createElement("option");
         option.setAttribute("value", genre.Id);
-        option_recom.setAttribute("value", genre.Id);
+        option_recom.setAttribute("value", genre.Genre_Name);
         option.innerText = genre.Genre_Name;
         option_recom.innerText = genre.Genre_Name;
         genre_movies.appendChild(option);
