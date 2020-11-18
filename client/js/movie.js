@@ -74,21 +74,21 @@ function post_comment() {
     id = id[id.length - 1];
     let value = document.getElementById("user-grade").value;
     let comment = document.getElementById("user-comment").value.trim();
-    
+
     if (comment == "") {
         alert("Por favor, ingrese un comentario");
     }
     else {
-        let item = {"IdMovie": id, "Grade": value, "Comment": comment};
+        let item = { "IdMovie": id, "Grade": value, "Comment": comment };
         fetch("/api/comments/create", {
             method: 'POST',
             body: JSON.stringify(item),
-            headers:{
+            headers: {
                 'Content-Type': 'application/json'
             }
         }).then(response => response.json())
-        .catch(error => console.error('Error:', error))
-        .then(() => append_comment(item));
+            .catch(error => console.error('Error:', error))
+            .then(() => append_comment(item));
     }
 }
 

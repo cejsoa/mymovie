@@ -162,7 +162,7 @@ async function add_movie() {
     await readImage(movie_image.files[0])
         .then(data => image["Image_Link"] = data);
     console.log(image);
-    
+
     // await fetch("/api/images/create",
     //     {
     //         method: 'POST',
@@ -187,21 +187,23 @@ async function add_movie() {
     ).then(response => response.json())
         .then(data => console.log(data));
     console.log("finalizado el agregar");
+}
 
 const initialize_listeners = () => {
     document.getElementById("btn-search-bar").onclick = get_search;
     document.getElementById("btn-accept-recom").onclick = get_recom;
     document.getElementById("logo-button").onclick = main_page;
-    document.getElementById("btn-add-comment").onclick = post_comment;
     document.getElementById("btn-accept-movie").onclick = add_movie;
+    document.getElementById("btn-add-comment").onclick = post_comment;
 }
 
 // This function makes a request to get the global nav bar 
-async function getNavBar() {
-    await fetch("/navbar")
+function getNavBar() {
+    fetch("/navbar")
         .then(response => response.text())
         .then(data => document.getElementById("global-nav-bar").innerHTML = data)
         .then(() => initialize_listeners());
     render();
 }
+
 getNavBar();
