@@ -124,14 +124,8 @@ exports.delete = (req, res) => {
 
 exports.searchByAproxName = (req, res) => {
   const name = req.params.name;
-  Movies.findAll({
-    where: {
-      NameMovie: {
-        [Op.like]: '%'+name+'%'
-      }
-    }
-  })
-  .then(data => {
+  Movies.sequelize.query(`SELECT * FROM Movies WHERE Movies.NameMovie LIKE \'%${name}%\';`)
+  .then(([data, metadata]) => {
     if(data){
       res.send(data)
     } else {
