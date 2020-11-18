@@ -14,38 +14,36 @@ exports.findRecom = (req, res) => {
     FROM Movies INNER JOIN Genres ON Movies.IdGenre = Genres.Id AND Genres.Genre_Name = \'${genre}\';`)
     .then(([data, metadata]) => {
         if(data){
-            var array_movies = [];
-            array_movies.push(data);
-            array_movies = array_movies[0];
             var i = 0;
             var favorite;
-            var n = array_movies.length;
+            var n = data.length;
             var grade = 0;
             var values;
             var recommended = [];
             
             while (i < n) 
             {
-                values = Object.values(array_movies[i]);
+                values = Object.values(data[i]);
                 favorite = values[2] ? 100 : 0;
                 grade = favorite * (fav / 100.0)
-                        + values[3] * (comm / 100.0)
-                        + values[4] * (imdb / 100.0)
-                        + values[5] * (meta / 100.0)
+                        + values[3] * (comm / 100.0) * 10
+                        + values[4] * (imdb / 100.0) * 10
+                        + values[5] * (meta / 100.0) * 10
                         + values[6] * (pop / 100.0);
                 values.push(grade);
-
+                
                 if (recommended.length == 0)
                 {
                     recommended.push(values);
                 }
-                else if (values[7] < recommended[recommended.length - 1][7] 
+                else if (values[7] <= recommended[recommended.length - 1][7] 
                         && recommended.length < 10)
                 {
                     recommended.push(values)
                 }
                 else
                 {
+                    
                     var j = 0;
                     var m = recommended.length;
                     while (j < m)

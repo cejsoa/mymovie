@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op;
 //Points
 
 const year_points = 20;
-const one_to_five = 5;
+const one_to_five = 15;
 const six_to_ten = 10;
 const eleven_to_twenty = 15;
 const twentyOne_to_infinite = 20;

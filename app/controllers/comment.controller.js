@@ -61,7 +61,7 @@ exports.create = (req, res) => {
     Comment.create(req.body)
         .then(data => {
             res.send({Id: data.Id});
-            movie_logic.calc_popularity(id);
+            movie_logic.calc_popularity(data.Id);
         })
         .catch(err => {
             res.status(500).send({
