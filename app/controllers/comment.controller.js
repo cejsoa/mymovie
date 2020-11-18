@@ -1,11 +1,12 @@
 const db = require("../models");
+const movie_logic = require("../src/movies.logic");
 const Comment = db.comment;
 const Op = db.Sequelize.Op;
 
 //Find one Comment object by PK
 exports.findOne = (req, res) => {
     const id = req.params.id;
-    Comment.findAll({ where: { IdMovie: id } })
+    Comment.findByPk(id)
         .then(data => {
             if (data) {
                 res.send(data)
@@ -60,6 +61,7 @@ exports.create = (req, res) => {
     Comment.create(req.body)
         .then(data => {
             res.send({Id: data.Id});
+            movie_logic.calc_popularity(id);
         })
         .catch(err => {
             res.status(500).send({
@@ -81,6 +83,7 @@ exports.update = (req, res) => {
                 res.send({
                     message: "Comment object was updated successfully."
                 });
+                movie_logic.calc_popularity(id);
             } else {
                 res.status(400).send({
                     message: `Cannot update Comment with id=${id}. Maybe Comment was not found or req.body is empty!`
