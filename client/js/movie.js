@@ -69,6 +69,8 @@ function get_movie_info() {
         .then(data => fill_comments(data));
 }
 
+get_movie_info();
+
 function post_comment() {
     let id = window.location.href.split('/');
     id = id[id.length - 1];
@@ -91,5 +93,3 @@ function post_comment() {
             .then(() => append_comment(item));
     }
 }
-
-get_movie_info();

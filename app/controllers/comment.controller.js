@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op;
 //Find one Comment object by PK
 exports.findOne = (req, res) => {
     const id = req.params.id;
-    Comment.findByPk(id)
+    Comment.findAll({ where: { IdMovie: id } })
         .then(data => {
             if (data) {
                 res.send(data)
