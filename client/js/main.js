@@ -73,6 +73,7 @@ const initialize_listeners = () => {
     document.getElementById("btn-search-bar").onclick = get_search;
     document.getElementById("btn-accept-recom").onclick = get_recom;
     document.getElementById("logo-button").onclick = main_page;
+    document.getElementById("btn-add-comment").onclick = post_comment;
 }
 
 // This function makes a request to get the global nav bar 
