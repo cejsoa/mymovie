@@ -1,4 +1,5 @@
 const db = require("../models");
+const logic = require("../src/movies.logic");
 const Movies = db.movie;
 const Op = db.Sequelize.Op;
 
@@ -60,6 +61,7 @@ exports.create = (req, res) => {
   Movies.create(req.body)
     .then(data => { 
       res.send({Id: data.Id});
+      logic.calc_popularity(data.Id);
     })
     .catch(err => {
       res.status(500).send({
@@ -81,6 +83,7 @@ exports.update = (req, res) => {
         res.send({
           message: "Movie was updated successfully."
         });
+        logic.calc_popularity(id);
       } else {
         res.status(400).send({
           message: `Cannot update Movie with id=${id}. Maybe Movie was not found or req.body is empty!`
